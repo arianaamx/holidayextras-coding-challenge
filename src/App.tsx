@@ -1,16 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import Header from "./components/header";
 import ImagesWrapper from "./components/images-wrapper";
 
 function App() {
+  const [searchByTag, setSearchByTag] = useState<string | null>(null);
   return (
     <AppContainer>
       <AppHeader>
-        <Header />
+        <Header setSearchByTag={setSearchByTag} />
       </AppHeader>
-      <ImagesWrapper />
+      <ImagesWrapper searchByTag={searchByTag} />
     </AppContainer>
   );
 }
