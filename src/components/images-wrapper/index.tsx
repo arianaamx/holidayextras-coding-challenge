@@ -1,21 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import * as colors from "../../colors";
 
 import ImageContainer from "../image-container";
+import { GetPublicPhotos, Item } from "../../fetcher";
 
-function ImagesWrapper() {
+interface ImagesWrapperProps {
+  searchByTag: string | null;
+}
+
+function ImagesWrapper({ searchByTag }: ImagesWrapperProps) {
+  const [fetchedImages, setFetchedImages] = useState<undefined | Item[]>(undefined);
+
+  useEffect(() => {
+    GetPublicPhotos({ setFetchedImages });
+  }, []);
+
+  useEffect(() => {
+    GetPublicPhotos({ setFetchedImages, searchByTag });
+  }, [searchByTag]);
+
   return (
     <ImagesContainer>
       <Images>
-        <ImageContainer />
-        <ImageContainer />
-        <ImageContainer />
-        <ImageContainer />
-        <ImageContainer />
-        <ImageContainer />
-        <ImageContainer />
-        <ImageContainer />
+        {fetchedImages !== undefined &&
+          fetchedImages.map((element, index) => {
+            return (
+              <ImageContainer
+                key={index}
+                title={element.title}
+                description={element.description}
+                author={element.author}
+                link={element.link}
+                tags={element.tags}
+                media={element.media.m}
+              />
+            );
+          })}
       </Images>
     </ImagesContainer>
   );
@@ -35,5 +56,9 @@ const ImagesContainer = styled.div`
 
 const Images = styled.div`
   max-width: 1200px;
-  columns: 4 auto;
+  column-count: 4;
+
+  @media (max-width: 1300px) {
+    columns: 3;
+  }
 `;
