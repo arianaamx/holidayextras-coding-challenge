@@ -3,3 +3,8 @@
   margin: 0;
   font-family: Poppins, sans-serif;
 }
+
+html {
+  /* Default line height */
+  line-height: 1.5em;
+}
