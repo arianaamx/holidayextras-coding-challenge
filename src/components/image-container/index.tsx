@@ -2,17 +2,29 @@ import React from "react";
 import styled from "styled-components";
 import * as colors from "../../colors";
 
-function ImageContainer() {
+interface ImageContainerProps {
+  title: string;
+  author: string;
+  description: string;
+  tags: string;
+  link: string;
+  media: string;
+}
+
+function ImageContainer({ title, author, description, tags, link, media }: ImageContainerProps) {
   return (
     <Container>
-      <FlickrImage src="/" alt="" />
-      <p>
-        <BoldedLink>Photo title</BoldedLink> by <BoldedLink>author</BoldedLink>
-      </p>
-      <Description>
-        Description: asifdohafoashf diusadgasuidgasuzdgsadjhBSA asdhuasdh ashfdaufhdaiudh fiushfasu
-      </Description>
-      <p>Tags: </p>
+      {console.log(link)}
+      <FlickrImage src={media} alt="" />
+      <TitleAndAuthor>
+        <a href={link}>
+          <BoldedLink>{title}</BoldedLink>
+        </a>{" "}
+        by <BoldedLink>{(author.match(/"(.+)"/) || [])[1]}</BoldedLink>
+      </TitleAndAuthor>
+      {console.log(description)}
+      {/* <Description>Description: {description}</Description> */}
+      <Tags>Tags: {tags}</Tags>
     </Container>
   );
 }
@@ -23,10 +35,13 @@ const Container = styled.div`
   padding: 10px 10px;
   background-color: white;
   border-radius: 5px;
-  border: 1px solid ${colors.LightBlue};
+  border: 3px solid ${colors.LightBlue};
   margin: 5px 5px;
 
   width: 250px;
+
+  /* Display inline-block so the columns don't break the element */
+  display: inline-block;
 `;
 
 const FlickrImage = styled.img`
@@ -35,10 +50,20 @@ const FlickrImage = styled.img`
   object-fit: cover;
 `;
 
+const TitleAndAuthor = styled.p`
+  height: 3em;
+  overflow: hidden;
+`;
+
 const BoldedLink = styled.span`
   font-weight: 600;
   text-decoration: underline;
   color: ${colors.Blue};
+
+  display: inline-block;
+  vertical-align: bottom;
+  height: 1.5em;
+  overflow: hidden;
 `;
 
 const Description = styled.p`
@@ -47,5 +72,14 @@ const Description = styled.p`
   display: -webkit-box;
   /* number of lines to show */
   -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+`;
+
+const Tags = styled.p`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  /* number of lines to show */
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
 `;
