@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/holidayextras-coding-challenge/static/css/main.b1a8e6ce.chunk.css",
+    "main.js": "/holidayextras-coding-challenge/static/js/main.5b9172bb.chunk.js",
+    "main.js.map": "/holidayextras-coding-challenge/static/js/main.5b9172bb.chunk.js.map",
+    "runtime-main.js": "/holidayextras-coding-challenge/static/js/runtime-main.ff997ba5.js",
+    "runtime-main.js.map": "/holidayextras-coding-challenge/static/js/runtime-main.ff997ba5.js.map",
+    "static/js/2.b95f80de.chunk.js": "/holidayextras-coding-challenge/static/js/2.b95f80de.chunk.js",
+    "static/js/2.b95f80de.chunk.js.map": "/holidayextras-coding-challenge/static/js/2.b95f80de.chunk.js.map",
+    "index.html": "/holidayextras-coding-challenge/index.html",
+    "static/css/main.b1a8e6ce.chunk.css.map": "/holidayextras-coding-challenge/static/css/main.b1a8e6ce.chunk.css.map",
+    "static/js/2.b95f80de.chunk.js.LICENSE.txt": "/holidayextras-coding-challenge/static/js/2.b95f80de.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ff997ba5.js",
+    "static/js/2.b95f80de.chunk.js",
+    "static/css/main.b1a8e6ce.chunk.css",
+    "static/js/main.5b9172bb.chunk.js"
+  ]
+}

@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/index.css"],"names":[],"mappings":"AAAA,EACE,SAAU,CACV,QAAS,CACT,8BACF,CAEA,KAEE,iBACF","file":"main.b1a8e6ce.chunk.css","sourcesContent":["* {\n  padding: 0;\n  margin: 0;\n  font-family: Poppins, sans-serif;\n}\n\nhtml {\n  /* Default line height */\n  line-height: 1.5em;\n}\n"]}
