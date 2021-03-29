@@ -15,7 +15,7 @@ function Header({ setSearchByTag }: HeaderProps) {
           type="text"
           placeholder="Search by tags..."
           onChange={(event) => {
-            setSearchByTag(event.target.value);
+            setSearchByTag(event.target.value ? event.target.value : "");
           }}
         />
       </Title>
@@ -38,6 +38,10 @@ const HeaderContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 500px) {
+    line-height: 1.5em;
+  }
 `;
 
 const Title = styled.div`
