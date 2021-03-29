@@ -12,9 +12,15 @@ interface ImageContainerProps {
 }
 
 function ImageContainer({ title, author, description, tags, link, media }: ImageContainerProps) {
+  const parseTags = (tags: string) => {
+    if (!tags) {
+      return "-";
+    }
+    return tags.replace(" ", ", ");
+  };
+
   return (
     <Container>
-      {console.log(link)}
       <FlickrImage src={media} alt="" />
       <TitleAndAuthor>
         <a href={link}>
@@ -22,9 +28,7 @@ function ImageContainer({ title, author, description, tags, link, media }: Image
         </a>{" "}
         by <BoldedLink>{(author.match(/"(.+)"/) || [])[1]}</BoldedLink>
       </TitleAndAuthor>
-      {console.log(description)}
-      {/* <Description>Description: {description}</Description> */}
-      <Tags>Tags: {tags}</Tags>
+      <Tags>Tags: {parseTags(tags)}</Tags>
     </Container>
   );
 }
@@ -32,6 +36,7 @@ function ImageContainer({ title, author, description, tags, link, media }: Image
 export default ImageContainer;
 
 const Container = styled.div`
+  text-align: left;
   padding: 10px 10px;
   background-color: white;
   border-radius: 5px;
@@ -39,6 +44,7 @@ const Container = styled.div`
   margin: 5px 5px;
 
   width: 250px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
 
   /* Display inline-block so the columns don't break the element */
   display: inline-block;
@@ -64,15 +70,6 @@ const BoldedLink = styled.span`
   vertical-align: bottom;
   height: 1.5em;
   overflow: hidden;
-`;
-
-const Description = styled.p`
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  /* number of lines to show */
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
 `;
 
 const Tags = styled.p`
